@@ -18,11 +18,12 @@ Tämä python-skripti ohjelmoi Waveshare 2,7-tuuman epaper-näytön näyttämä�
 Lisää crontab (muuta polku omalle ympäristöllesi):
 
     @reboot sleep 10 && cd /home/pi/work/epaperkiekko && python3 main.py
-    */30 * * * * cd /home/pi/work/epaperkiekko && python3 main.py
+    */30 * * * * cd /home/rpi/work/epaperkiekko && python3 main.py
 
 Autossa:
 
-1. Kytke usb-johto syöttämään virta Raspberry Pi:lle
+1. Varmista, että sinulla on toimiva nettiyhteys jaettuna Raspberry Pille
+1. Kytke usb-johto syöttämään virta Raspberry Pille
 1. Lähde ajamaan
 1. Näyttö päivittyy laitteen käynnistyttyä sekä tasa- ja puolitunnein (ks. edellinen crontab-tiedosto)
 1. Pysäköi auto
@@ -36,3 +37,7 @@ Autossa:
 
     python3 main.py HH:MM (Aika komentoriviparametrina)
 
+## TODO
+
+* Riippuvuus Croniin pois
+* Docker

@@ -1,7 +1,13 @@
 import datetime
 import sys
 import logging
-logging.basicConfig(level=logging.INFO)
+import os.path
+import time
+
+logging.basicConfig(
+    format='%(asctime)s %(levelname)-8s %(message)s',
+    level=logging.INFO,
+    datefmt='%Y-%m-%d %H:%M:%S')
 
 import epd2in7b
 import my_version
@@ -19,6 +25,13 @@ def get_next_half_hour(current_time=None):
             print("Virheellinen aikaformaatti. Käytä HH:MM-muotoa.")
             sys.exit(1)
     else:
+        now = datetime.datetime.now()
+
+    # Tarkista, onko skripti käynnistetty ennen luomista.
+    script_creation_time = datetime.datetime.fromtimestamp(os.path.getctime(__file__))
+    while now < script_creation_time:
+        logging.warning("Odota, kunnes laitteen kello on myöhempi kuin skriptin luomisaika...")
+        time.sleep(5)  # Odota 5 sekuntia ennen uutta tarkistusta
         now = datetime.datetime.now()
 
     # Laske aikaero seuraavaan puolen tuntiin.
