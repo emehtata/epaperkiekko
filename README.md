@@ -1,5 +1,7 @@
 # epaperkiekko - pysäköintikiekko
 
+![alt text](doc/epaperkiekko.jpg)
+
 ## Tarvikkeet
 
 * Raspberry Pi (3/4/5)
