@@ -1,5 +1,7 @@
 # epaperkiekko - pysäköintikiekko
 
+Huom: Tämä versio on vielä PoC eikä testattu kenttäolosuhteissa.
+
 Tämä python-skripti ohjelmoi Waveshare 2,7-tuuman epaper-näytön näyttämään kelloajan seuraavaan tasa- tai puoleen tuntiin, eli sitä voi käyttää automaattisena pysäköintikiekkona.
 
 ![alt text](doc/epaperkiekko.jpg)
@@ -9,6 +11,7 @@ Tämä python-skripti ohjelmoi Waveshare 2,7-tuuman epaper-näytön näyttämä�
 * Raspberry Pi (3/4/5)
 * epaper-näyttö (Waveshare 2,7", https://www.waveshare.com/2.7inch-e-paper-hat.htm)
 * OS, jossa valmiiksi konfattu python3 epaperpi-kirjastoineen (tämän dokumentin ulkopuolella)
+* Nettiyhteys konfiguroituna (kellon synkronointia varten), esim. jakamalla puhelimen hotspotilla
 
 ## Käyttö
 
