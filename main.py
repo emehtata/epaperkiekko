@@ -31,6 +31,7 @@ def get_next_half_hour(current_time=None):
     script_creation_time = datetime.datetime.fromtimestamp(os.path.getctime(__file__))
     while now < script_creation_time:
         logging.warning("Odota, kunnes laitteen kello on myöhempi kuin skriptin luomisaika...")
+        logging.warning(f"{now} < {script_creation_time}")
         time.sleep(5)  # Odota 5 sekuntia ennen uutta tarkistusta
         now = datetime.datetime.now()
 
@@ -54,7 +55,7 @@ def draw_kiekko(timestring):
 
     font_time = ImageFont.truetype(
         '/usr/share/fonts/truetype/wqy/wqy-microhei.ttc', 108)
-    
+
     epd = epd2in7b.EPD()
     epd.init()
     logging.info("Clear...")
@@ -63,7 +64,7 @@ def draw_kiekko(timestring):
         '1', (epd2in7b.EPD_HEIGHT, epd2in7b.EPD_WIDTH), 255)  # 264*176
     redimage1 = Image.new(
         '1', (epd2in7b.EPD_HEIGHT, epd2in7b.EPD_WIDTH), 255)  # 264*176
-        
+
     drawblack = ImageDraw.Draw(blackimage1)
     drawblack.text((50,1), "Pysäköinti alkoi:", font=font_title, fill=0)
     drawblack.text((1,30), f"{timestring}", font=font_time, fill=0)
@@ -82,9 +83,16 @@ if __name__ == "__main__":
     else:
         current_time = None
 
-    next_half_hour = get_next_half_hour(current_time)
-
-    formatted_time = next_half_hour.strftime("%H:%M")
-    logging.info(f"Set time to: {formatted_time}")
-
-    draw_kiekko(formatted_time)
+    saved_half_hour = None
+    # Silmukka, joka odottaa kellon päivittymistä.
+    # Raspberry Pi on riippuvainen verkon ajasta, joten crontab ei ole luotettava.
+    while True:
+        now = datetime.datetime.now()
+        next_half_hour = get_next_half_hour(current_time)
+        current_time = None
+        if(saved_half_hour != next_half_hour):
+            formatted_time = next_half_hour.strftime("%H:%M")
+            logging.info(f"Set time to: {formatted_time}")
+            draw_kiekko(formatted_time)
+        saved_half_hour = next_half_hour
+        time.sleep(10)
