@@ -1,8 +1,6 @@
 # epaperkiekko - pysäköintikiekko
 
-Huom: Tämä versio on vielä PoC eikä testattu kenttäolosuhteissa.
-
-Tämä python-skripti ohjelmoi Waveshare 2,7-tuuman epaper-näytön näyttämään kelloajan seuraavaan tasa- tai puoleen tuntiin, eli sitä voi käyttää automaattisena pysäköintikiekkona.
+Tämä python-skripti ohjelmoi Waveshare 2,7-tuuman epaper-näytön näyttämään kellonajan seuraavaan tasa- tai puoleen tuntiin, eli sitä voi käyttää automaattisena pysäköintikiekkona.
 
 ![alt text](doc/epaperkiekko.jpg)
 
@@ -34,6 +32,11 @@ Autossa:
 1. Irrota Raspberry Pi virransyötöstä (useimmiten auton sammuttaminen riittää) ja aseta se kojelaudalle. Se näyttää nyt automaattisesti seuraavaa tasa- tai puolta tuntia, kuten pysäköintikiekon kuuluukin \o/
 1. Kun olet hoitanut asiasi, palaa kohtaan 1.
 
+Nappien toiminnot vasemmalta ylhäältä alas:
+* Aseta teksti "Saapumisaika" (Oletus)
+* Aseta teksti "Ankomstid"
+* Aseta teksti "Pysäköinti alkoi"
+* Näytä kellonaika
 
 ## Testaus
 
@@ -41,8 +44,6 @@ Autossa:
 
     python3 main.py HH:MM (Aika komentoriviparametrina)
 
-
 ## TODO
 
-* Näytön napit hyötykäyttöön: Ohjeet https://dev.to/ranewallin/getting-started-with-the-waveshare-2-7-epaper-hat-on-raspberry-pi-41m8
-
+* Tallenna asetukset ja lue ne käynnistyksessä

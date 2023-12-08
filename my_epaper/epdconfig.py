@@ -6,7 +6,7 @@
 # *----------------
 # * |	This version:   V2.0
 # * | Date        :   2018-11-01
-# * | Info        :   
+# * | Info        :
 # * 1.Remove:
 #   digital_write(self, pin, value)
 #   digital_read(self, pin)
@@ -34,9 +34,10 @@
 #
 
 
-import spidev
-import RPi.GPIO as GPIO
 import time
+
+import RPi.GPIO as GPIO
+import spidev
 
 # Pin definition
 RST_PIN         = 17
