@@ -44,6 +44,10 @@ Nappien toiminnot vasemmalta ylhäältä alas:
 
     python3 main.py HH:MM (Aika komentoriviparametrina)
 
+## "Analoginen" versio (Työn alla)
+
+    python3 analog.py (Näyttää oikean parkkikiekon kuvan)
+
 ## TODO
 
 * Tallenna asetukset ja lue ne käynnistyksessä
