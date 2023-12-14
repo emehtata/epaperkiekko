@@ -1,10 +1,12 @@
 MACH=$$(uname -m)
-IMAGE=epaperkiekko
-NAME=$(IMAGE)
+VER ?= analog
+PRODUCT=epaperkiekko
+IMAGE=$(PRODUCT)-$(VER)
+NAME=$(PRODUCT)
 TAG=localhost:5000/$(IMAGE)-$(MACH)
 
 build:
-	docker build . -t $(IMAGE)
+	docker build . -f Dockerfile.$(VER) -t $(IMAGE)
 
 stop:
 	docker stop $(NAME)

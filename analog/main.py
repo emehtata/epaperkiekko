@@ -4,9 +4,9 @@ from datetime import datetime
 import logging
 import time
 import math
+import sys
 
-from gpiozero import Button
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image
 
 from my_epaper import epd2in7b
 from my_clock import my_clock
@@ -16,8 +16,8 @@ logging.basicConfig(
     level=logging.INFO,
     datefmt='%Y-%m-%d %H:%M:%S')
 
-def analog_kiekko(current_time):
-    img = my_clock.rotate_and_crop_image(current_time)
+def analog_kiekko(h, m):
+    img = my_clock.rotate_and_crop_image(h, m)
     epd = epd2in7b.EPD()
     epd.init()
     logging.info("Clear...")
@@ -34,16 +34,29 @@ def analog_kiekko(current_time):
     epd.display(epd.getbuffer(blackimage1), epd.getbuffer(redimage1))
 
 if __name__ == "__main__":
+    if len(sys.argv) > 2:
+        print("Liikaa argumentteja. Käytä joko 'python script.py HH:MM' tai 'python script.py'.")
+        sys.exit(1)
+
+    if len(sys.argv) == 2:
+        h,m = map(int, sys.argv[1].split(':'))
+    else:
+        current_time = datetime.now().time()
+        h = current_time.hour
+        m = current_time.minute
+
     force_update =True
     last_update = datetime.now().time()
 
     while True:
         # Hae nykyinen aika
-        current_time = datetime.now().time()
-        current_time_half = math.ceil( ( current_time.hour * 60 + current_time.minute ) / 30)
+        current_time_half = math.ceil( ( h * 60 + m+1 ) / 30)
         logging.info(current_time_half)
         if force_update or ( last_update != current_time_half ):
-            analog_kiekko(current_time)
+            analog_kiekko(h, m)
             last_update = current_time_half
         time.sleep(30)
+        current_time = datetime.now().time()
+        h = current_time.hour
+        m = current_time.minute
         force_update = False

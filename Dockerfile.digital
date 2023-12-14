@@ -13,4 +13,4 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Run the Python script as the default command
-CMD ["python3", "main.py"]
+CMD ["./run.sh", "digital"]

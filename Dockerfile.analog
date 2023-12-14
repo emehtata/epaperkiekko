@@ -1,0 +1,14 @@
+# Use the official Python base image
+FROM python:3
+
+# Set the working directory in the container
+WORKDIR /app
+
+# Copy the Python dependencies file
+COPY requirements.txt .
+
+# Install the Python dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Run the Python script as the default command
+CMD ["./run.sh", "analog"]

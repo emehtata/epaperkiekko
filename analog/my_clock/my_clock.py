@@ -1,12 +1,12 @@
 from PIL import Image
 
-def rotate_and_crop_image(current_time, image_path="my_clock/kellotaulu.png", output_path=None):
+def rotate_and_crop_image(hours, minutes, image_path="my_clock/kellotaulu.png", output_path=None):
     # Lataa kuva
     img = Image.open(image_path)
 
     # Laske kulma, jonka mukaan kuva tulee kääntää
-    minutes = (current_time.hour % 12) * 60 + current_time.minute
-    angle = ( ( minutes + 30 - minutes % 30 ) / 720 * 360 )
+    total_minutes = (hours % 12) * 60 + minutes
+    angle = ( ( total_minutes + 30 - total_minutes % 30 ) / 720 * 360 )
 
     # Käännä kuvaa
     rotated_img = img.rotate(-angle, resample=Image.BICUBIC, center=(img.width / 2, img.height / 2))

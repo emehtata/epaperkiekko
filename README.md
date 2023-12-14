@@ -1,6 +1,12 @@
 # epaperkiekko - pysäköintikiekko
 
-Tämä python-skripti ohjelmoi Waveshare 2,7-tuuman epaper-näytön näyttämään kellonajan seuraavaan tasa- tai puoleen tuntiin, eli sitä voi käyttää automaattisena pysäköintikiekkona.
+## Kiekkoversio (analog)
+
+Tämä python-ohjelma ohjelmoi Waveshare 2,7-tuuman epaper-näytön näyttämään pysäköintikiekon "kiekko"-osan alaosaa, eli sitä voi käyttää automaattisena pysäköintikiekkona vanhanaikaisen pysäköintikiekon kehyksen kanssa.
+
+## Digitaalikelloversio (digital)
+
+Tämä python-ohjelma ohjelmoi Waveshare 2,7-tuuman epaper-näytön näyttämään kellonajan seuraavaan tasa- tai puoleen tuntiin, eli sitä voi käyttää automaattisena pysäköintikiekkona.
 
 ![alt text](doc/epaperkiekko.jpg)
 
@@ -12,13 +18,17 @@ Tämä python-skripti ohjelmoi Waveshare 2,7-tuuman epaper-näytön näyttämä�
 
 ## Käyttö
 
+Oletuksena käännetään ja ajetaan analogista versiota.
+
+Kiekon version voi määrittää ympäristömuuttujalla `VER`, joka voi olla joko "analog" tai "digital".
+
 Käännä image:
 
-    make build
+    make (VER=analog/digital) build
 
 Käynnistä kontti:
 
-    make run
+    make (VER=analog/digital) run
 
 Lisää tietoja `Makefile`-tiedostossa.
 
@@ -32,7 +42,7 @@ Autossa:
 1. Irrota Raspberry Pi virransyötöstä (useimmiten auton sammuttaminen riittää) ja aseta se kojelaudalle. Se näyttää nyt automaattisesti seuraavaa tasa- tai puolta tuntia, kuten pysäköintikiekon kuuluukin \o/
 1. Kun olet hoitanut asiasi, palaa kohtaan 1.
 
-Nappien toiminnot vasemmalta ylhäältä alas:
+Nappien toiminnot vasemmalta ylhäältä alas digitaalisessa versiossa:
 * Aseta teksti "Saapumisaika" (Oletus)
 * Aseta teksti "Ankomstid"
 * Aseta teksti "Pysäköinti alkoi"
@@ -40,14 +50,13 @@ Nappien toiminnot vasemmalta ylhäältä alas:
 
 ## Testaus
 
+`cd analog` TAI `cd digital`
+
     python3 main.py (Aika järjestelmän kellosta)
 
     python3 main.py HH:MM (Aika komentoriviparametrina)
 
-## "Analoginen" versio (Työn alla)
-
-    python3 analog.py (Näyttää oikean parkkikiekon kuvan)
-
 ## TODO
 
 * Tallenna asetukset ja lue ne käynnistyksessä
+* Asenna my_epaper moduulina ennen käyttöä
