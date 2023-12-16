@@ -4,11 +4,13 @@
 
 Tämä python-ohjelma ohjelmoi Waveshare 2,7-tuuman epaper-näytön näyttämään pysäköintikiekon "kiekko"-osan alaosaa, eli sitä voi käyttää automaattisena pysäköintikiekkona vanhanaikaisen pysäköintikiekon kehyksen kanssa.
 
+![Pysäköintikiekko](doc/epaperkiekko-ana.jpg)
+
 ## Digitaalikelloversio (digital)
 
 Tämä python-ohjelma ohjelmoi Waveshare 2,7-tuuman epaper-näytön näyttämään kellonajan seuraavaan tasa- tai puoleen tuntiin, eli sitä voi käyttää automaattisena pysäköintikiekkona.
 
-![alt text](doc/epaperkiekko.jpg)
+![Pysäköintiaika numeroine](doc/epaperkiekko.jpg)
 
 ## Tarvikkeet
 
