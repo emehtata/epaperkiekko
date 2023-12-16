@@ -46,7 +46,7 @@ Autossa:
 
 Nappien toiminnot vasemmalta ylhäältä alas digitaalisessa versiossa:
 * Aseta teksti "Saapumisaika" (Oletus)
-* Aseta teksti "Ankomstid"
+* Aseta teksti "Ankomsttid"
 * Aseta teksti "Pysäköinti alkoi"
 * Näytä kellonaika
 
