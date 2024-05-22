@@ -17,8 +17,11 @@ rm: stop
 rmi: stop rm
 	docker rmi $(IMAGE)
 
-run:
+run_mount:
 	docker run -d --name $(NAME) --privileged -v /etc/localtime:/etc/localtime:ro --restart=unless-stopped -v $(PWD):/app $(IMAGE)
+
+run:
+	docker run -d --name $(NAME) --privileged -v /etc/localtime:/etc/localtime:ro --restart=unless-stopped $(IMAGE)
 
 run_bash:
 	docker run --rm -it --entrypoint bash $(IMAGE)

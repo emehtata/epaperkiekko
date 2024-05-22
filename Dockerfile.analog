@@ -12,5 +12,7 @@ RUN apt-get update && apt-get install -y gcc && apt-get clean
 # Install the Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
+COPY . .
+
 # Run the Python script as the default command
 CMD ["./run.sh", "analog"]
